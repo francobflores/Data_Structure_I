@@ -36,6 +36,18 @@ No *insereInicio(No *L, int valor){
 
 //função que insere um nó no final de uma Lista Circular
 
+No *insereFinal(No *L, int valor){
+    No *novo = criaNo(valor);
+    if(L == NULL){
+        L = novo;
+        novo->prox = L;
+        return L;
+    }
+    novo->prox = L->prox;
+    L->prox = novo;
+    L = novo;
+    return L;
+}
 //função para imprimir uma LCD
 void imprime(No *L){
     if(L != NULL){
@@ -52,13 +64,26 @@ void imprime(No *L){
 }
 
 
-int main(){
+/* int main(){
     No *L = NULL;
 
     L = insereInicio(L, 10);
     L = insereInicio(L, 15);
     L = insereInicio(L, 12);
     L = insereInicio(L, 18);
+
+    printf("Lista: ");
+    imprime(L);
+    return 0;
+} */
+
+int main(){
+    No *L = NULL;
+
+    L = insereFinal(L, 10);
+    L = insereFinal(L, 15);
+    L = insereFinal(L, 12);
+    L = insereFinal(L, 18);
 
     printf("Lista: ");
     imprime(L);
