@@ -21,7 +21,7 @@ No *criaNo(int valor){
     return novo;
 }
 
-//função que insere um nó em uma Lista Circular
+//função que insere um nó no inicio de uma Lista Circular
 No *insereInicio(No *L, int valor){
     No *novo = criaNo(valor);
     if(L == NULL){
@@ -33,6 +33,8 @@ No *insereInicio(No *L, int valor){
     L->prox = novo;
     return L; 
 }
+
+//função que insere um nó no final de uma Lista Circular
 
 //função para imprimir uma LCD
 void imprime(No *L){
