@@ -1,13 +1,13 @@
 
 all: teste
 
-teste: aluno.o main.o
-	gcc -o teste aluno.o main.o
+teste: pilha.o main.o
+	gcc -o teste pilha.o main.o
 
-aluno.o: aluno.c aluno.h
-	gcc -c aluno.c -Wall -Werror -Wextra
+pilha.o: pilha.c pilha.h
+	gcc -c pilha.c -Wall -Werror -Wextra
 
-main.o: main.c aluno.h
+main.o: main.c pilha.h
 	gcc -c main.c -Wall -Werror -Wextra
 
 clean:

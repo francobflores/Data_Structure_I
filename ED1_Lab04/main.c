@@ -1,22 +1,18 @@
-#include "aluno.h"
+#include "pilha.h"
 
-int main() {
-    int identidade;
-    char nome[100], email[200];
-    double media;
-    Aluno *a1 = NULL;
-    printf("Digite o id do aluno: ");
-    scanf("%d", &identidade);
-    printf("Digite o nome do aluno: ");
-    getc(stdin);
-    scanf("%[^\n]", nome);
-    printf("Digite o e-mail do aluno: ");
-    getc(stdin);
-    scanf("%[^\n]", email);
-    printf("Digite a media do aluno: ");
-    scanf("%lf", &media);
-    a1 = criaAluno(identidade, nome, email, media);
-    printf("id: %d\nnome: %s\ne-mail: %s\nmedia: %.2f\n", a1->id, a1->nome, a1->email, a1->media);
-    destroiAluno(a1);
+int main(){
+    No *Pilha = NULL;
+    Pilha = Empilha(Pilha,'(');
+    Pilha = Empilha(Pilha,'(');
+    Pilha = Empilha(Pilha,')');
+
+    printf("Pilha: ");
+    imprimir_Pilha(Pilha);
+
+    Pilha  = Desempilha(Pilha);
+    printf("Pilha pode Desempilhar: ");
+    imprimir_Pilha(Pilha);
+
+
     return 0;
 }
