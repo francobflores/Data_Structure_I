@@ -13,6 +13,8 @@ typedef struct no{
     struct no *prox;
 }No;
 
+/* Essas Funções foram feitas com logica de Lista Simplesmente Encadeada*/
+
 /* Cabeçalhos das funções com suas respectivas descrições */
 
 //
