@@ -35,7 +35,7 @@ Função:No *Empilha(No *Pilha, char x);
 Descrição: Adiciona um nó na pilha sempre no final da pilha.
 Entrada:
 No *Pilha.
-char x.
+int valor.
 
 Saída:
 ponteiro para ultimo nó da Pilha
