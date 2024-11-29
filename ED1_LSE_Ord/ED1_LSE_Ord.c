@@ -148,7 +148,7 @@ int main(){
     L = excluiChaveOrdenada(L, 8);
     L = excluiChaveOrdenada(L, 50);
     L = excluiChaveOrdenada(L, 90);
-    printf("Lista: ");
+    printf("Lista pós exclusão: ");
     imprimir_LSE(L);
 
     return 0;
