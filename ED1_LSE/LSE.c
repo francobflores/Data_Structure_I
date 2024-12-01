@@ -1,11 +1,5 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include "LSE.h"
 
-//estrutura para um nó renomeado para No.
-typedef struct no{
-    int chave;
-    struct no *prox;
-}No;
 //função para criar um nó recebendo uma valor para o campo chave.
 No *criaNo(int valor){
     No *novo;
@@ -123,56 +117,3 @@ No *excluiChave(No *L, int chave){
         return L;
     }    
 }
-
-
-// função principal para teste da função insereInicio().
-/*
-int main(){
-    No *L = NULL;
-    L = insereInicio(L, 10);
-    L = insereInicio(L, 10);
-    L = insereInicio(L, 10);
-    L = insereInicio(L, 10);
-
-    printf("Lista: ");
-    imprimir_LSE(L);
-
-    return 0;
-}
-*/
-//lembrar de criar uma função main para testar cada função de inserção, 
-//busca exclusão e impressão.
-/*
-int main(){
-    No *L = NULL;
-    L = insereFinal(L, 10);
-    L = insereFinal(L, 20);
-    //L = insereFinal(L, 30);
-
-    printf("Lista: ");
-    imprimir_LSE(L);
-
-    L = excluiFinal(L);
-    printf("Após exclusão do ultimo elemento: ");
-    imprimir_LSE(L);
-
-    return 0;
-}
-*/
-// função principal para testar erro da exclusão de uma chave na LSE
-
-int main(){
-    No *L = NULL;
-    L = insereFinal(L, 10);
-    L = insereFinal(L, 20);
-    L = insereFinal(L, 30);
-
-    printf("Lista: ");
-    imprimir_LSE(L);
-
-    L = excluiChave(L,20);
-    printf("Após exclusão da chave buscada: ");
-    imprimir_LSE(L);
-
-    return 0;
-} 
