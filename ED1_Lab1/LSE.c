@@ -79,7 +79,35 @@ No *concatenaLSE(No *L1, No *L2){
     return L1;
 }
 
-int main(){
+No* ExcluiRepetidos(No* L) {
+    No* aux = L;
+    No* pred = aux;
+    No* aux2 = aux->prox;
+
+    if (L == NULL)
+        return L;
+
+    while (aux->prox != NULL) {
+        while (aux2 != NULL) {
+            if (aux->chave == aux2->chave) {
+                pred->prox = aux2->prox;
+                free(aux2);
+                aux2 = pred->prox;
+            } else {
+                pred = aux2;
+                aux2 = aux2->prox;
+            }
+        }
+        aux = aux->prox;
+        pred = aux;
+        aux2 = aux->prox;
+    }
+    return L;
+}
+
+
+
+/* int main(){
     No *L = criaLista();
     printf("AGORA PARA LISTA 2\n\n");
     No *L2 = criaLista();
@@ -93,4 +121,25 @@ int main(){
     printf("Lista: ");
     imprimir_LSE(L);
     return 0;
-}
+} */
+
+ int main(){
+    No *L = criaLista();
+    printf("AGORA PARA LISTA 2\n\n");
+    /* No *L2 = criaLista(); */
+    printf("L1: ");
+    imprimir_LSE(L);
+    L = ExcluiRepetidos(L);
+    printf("L1 depois de excluir repetidos: ");
+    imprimir_LSE(L);
+
+
+    /* printf("L2: ");
+    imprimir_LSE(L2);
+    concatenaLSE(L, L2); */
+    printf("\n\n");
+
+    printf("Lista: ");
+    imprimir_LSE(L);
+    return 0;
+} 
