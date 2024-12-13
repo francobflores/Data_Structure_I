@@ -42,7 +42,7 @@ void insereInicio(Lista *L, int valor) {
     novo->prox = L->sentinela->prox;
     L->sentinela->prox = novo;
 }
-void exclui_inicio(Lista* L) {
+void excluiInicio(Lista* L) {
     if (L->sentinela->prox != NULL) {
         No* aux = L->sentinela->prox;
         L->sentinela->prox = aux->prox;
