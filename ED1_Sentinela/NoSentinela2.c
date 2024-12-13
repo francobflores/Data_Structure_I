@@ -10,6 +10,7 @@ typedef struct lista {
     No *sentinela;
 } Lista;
 
+// Função para criar e inicializar uma nova lista com nó sentinela
 Lista* criaLista() {
     Lista *L = (Lista*)malloc(sizeof(Lista));
     if (L == NULL) {
@@ -26,6 +27,7 @@ Lista* criaLista() {
     return L;
 }
 
+// Função para criar e inicializar um novo nó
 No* criaNo(int valor) {
     No *novo = (No*)malloc(sizeof(No));
     if (novo == NULL) {
@@ -37,11 +39,14 @@ No* criaNo(int valor) {
     return novo;
 }
 
+// Função para inserir um nó no início da lista
 void insereInicio(Lista *L, int valor) {
     No *novo = criaNo(valor);
     novo->prox = L->sentinela->prox;
     L->sentinela->prox = novo;
 }
+
+// Função para excluir o primeiro nó da lista (após o sentinela)
 void excluiInicio(Lista* L) {
     if (L->sentinela->prox != NULL) {
         No* aux = L->sentinela->prox;
@@ -50,7 +55,7 @@ void excluiInicio(Lista* L) {
     }
 }
 
-
+// Função para inserir um nó no final da lista
 void insereFinal(Lista *L, int valor) {
     No *novo = criaNo(valor);
     No *aux = L->sentinela;
@@ -60,6 +65,7 @@ void insereFinal(Lista *L, int valor) {
     aux->prox = novo;
 }
 
+// Função para excluir o último nó da lista
 void excluiFinal(Lista *L) {
     if (L->sentinela->prox != NULL) {
         No* aux = L->sentinela->prox;
@@ -77,7 +83,7 @@ void excluiFinal(Lista *L) {
     }
 }
 
-
+// Função para imprimir todos os nós da lista
 void imprime(Lista *L) {
     No *aux = L->sentinela->prox;
     while (aux != NULL) {
@@ -89,50 +95,55 @@ void imprime(Lista *L) {
 
 int main() {
     Lista *L = criaLista();
+    
     // Testes de Inserção no Início
+    printf("Inserindo no início:\n");
     insereInicio(L, 10);
     insereInicio(L, 20);
-    printf("Após inserir no início: ");
-    imprime(L);
+    imprime(L); // Deve imprimir: [20] [10]
 
     // Testes de Inserção no Final
+    printf("Inserindo no final:\n");
     insereFinal(L, 30);
     insereFinal(L, 40);
-    printf("Após inserir no final: ");
-    imprime(L);
+    imprime(L); // Deve imprimir: [20] [10] [30] [40]
 
-    // Testes de Lista Vazia
+    // Teste de Exclusão do Início
+    printf("Excluindo do início:\n");
+    excluiInicio(L);
+    imprime(L); // Deve imprimir: [10] [30] [40]
+
+    // Teste de Exclusão do Final
+    printf("Excluindo do final:\n");
+    excluiFinal(L);
+    imprime(L); // Deve imprimir: [10] [30]
+
+    // Teste de Lista Vazia
+    printf("Teste de lista vazia:\n");
     Lista *vazia = criaLista();
     printf("Lista inicialmente vazia: ");
-    imprime(vazia);
+    imprime(vazia); // Deve imprimir: (nada)
 
     // Teste de Inserção em Lista Vazia
+    printf("Inserindo em lista vazia:\n");
     insereInicio(vazia, 50);
-    printf("Após inserir em lista vazia: ");
-    imprime(vazia);
+    imprime(vazia); // Deve imprimir: [50]
 
-    // Testes de Estresse (opcional)
-    for (int i = 0; i < 1000; i++) {
-        insereFinal(L, i);
-    }
-    printf("Após inserir 1000 elementos: ");
-    imprime(L);  // Pode ser simplificado se imprimir for muito lento para muitos elementos
-
-    // Liberar memória (opcional, mas recomendável)
-    No* atual = L->sentinela->prox;
-    while (atual != NULL) {
-        No* temp = atual;
-        atual = atual->prox;
+    // Liberar memória
+    No* aux = L->sentinela->prox;
+    while (aux != NULL) {
+        No* temp = aux;
+        aux = aux->prox;
         free(temp);
     }
     free(L->sentinela);
     free(L);
 
     // Liberar memória da lista vazia
-    atual = vazia->sentinela->prox;
-    while (atual != NULL) {
-        No* temp = atual;
-        atual = atual->prox;
+    aux = vazia->sentinela->prox;
+    while (aux != NULL) {
+        No* temp = aux;
+        aux = aux->prox;
         free(temp);
     }
     free(vazia->sentinela);
