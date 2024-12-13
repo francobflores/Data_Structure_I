@@ -42,6 +42,14 @@ void insereInicio(Lista *L, int valor) {
     novo->prox = L->sentinela->prox;
     L->sentinela->prox = novo;
 }
+void exclui_inicio(Lista* L) {
+    if (L->sentinela->prox != NULL) {
+        No* aux = L->sentinela->prox;
+        L->sentinela->prox = aux->prox;
+        free(aux);
+    }
+}
+
 
 void insereFinal(Lista *L, int valor) {
     No *novo = criaNo(valor);
@@ -51,6 +59,24 @@ void insereFinal(Lista *L, int valor) {
     }
     aux->prox = novo;
 }
+
+void excluiFinal(Lista *L) {
+    if (L->sentinela->prox != NULL) {
+        No* aux = L->sentinela->prox;
+        No* pred = NULL;
+        while (aux->prox != NULL) {
+            pred = aux;
+            aux = aux->prox;
+        }
+        if (pred != NULL) {
+            pred->prox = NULL;
+        } else {
+            L->sentinela->prox = NULL;
+        }
+        free(aux);
+    }
+}
+
 
 void imprime(Lista *L) {
     No *aux = L->sentinela->prox;
