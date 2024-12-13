@@ -92,6 +92,23 @@ void imprime(Lista *L) {
     }
     printf("\n");
 }
+// Função para buscar um nó na lista com um valor específico
+// Retorna um ponteiro para o nó se encontrado, caso contrário retorna NULL
+No* busca(Lista *L, int valor) {
+    No* aux = L->sentinela->prox;
+    while (aux != NULL) {
+        if (aux->chave == valor) {
+            break;
+        }
+        aux = aux->prox;
+    }
+    return aux;
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Inclua aqui todas as suas funções e definições, incluindo a função busca
 
 int main() {
     Lista *L = criaLista();
@@ -128,6 +145,22 @@ int main() {
     printf("Inserindo em lista vazia:\n");
     insereInicio(vazia, 50);
     imprime(vazia); // Deve imprimir: [50]
+
+    // Teste da função busca
+    printf("Testando a função busca:\n");
+    No* resultado = busca(L, 30);
+    if (resultado != NULL) {
+        printf("Valor 30 encontrado: [%d]\n", resultado->chave); // Deve imprimir: Valor 30 encontrado: [30]
+    } else {
+        printf("Valor 30 não encontrado\n");
+    }
+
+    resultado = busca(L, 50);
+    if (resultado != NULL) {
+        printf("Valor 50 encontrado: [%d]\n", resultado->chave);
+    } else {
+        printf("Valor 50 não encontrado\n"); // Deve imprimir: Valor 50 não encontrado
+    }
 
     // Liberar memória
     No* aux = L->sentinela->prox;
